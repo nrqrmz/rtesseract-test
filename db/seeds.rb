@@ -1,9 +1,12 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# install Tesseract OCR
+# sudo apt-get install tesseract-ocr # ubunto
+# brew install tesseract # macOS
+
+require 'rtesseract'
+
+ticket_1_path = File.join(Dir.pwd, 'app', 'assets', 'images', 'ticket_1.jpg')
+ticket_1 = RTesseract.new(ticket_1_path)
+
+ticket_1_text = ticket_1.to_s # This converts the recognized text to a string
+
+puts ticket_1_text # Prints the extracted text to your console
