@@ -2,11 +2,14 @@
 # sudo apt-get install tesseract-ocr # ubuntu
 # brew install tesseract # macOS
 
-# require 'rtesseract'
 
 tickets = %w[ticket_1.jpg ticket_2.jpg ticket_3.jpg ticket_3.jpg ticket_4.jpg]
 
 tickets.each do |ticket|
+  puts ticket.center(50, ' ')
+  puts '-' * 50
+  puts
+
   ticket_path = File.join(Dir.pwd, 'app', 'assets', 'images', ticket)
   ocr_ticket = RTesseract.new(ticket_path)
 
